@@ -79,5 +79,5 @@ public class Problema_3_1 extends JFrame implements ActionListener {
 	void imprimir(String s) {
 		txtS.append(s + "\n");
 	}	
-	
+	//PROBANDOOOOO A VER SI SE ACTUALIZAAAAAAAAAA
 }
