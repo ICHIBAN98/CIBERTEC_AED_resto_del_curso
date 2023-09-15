@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.EventQueue;
+import semana_03.Consultor;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -69,7 +70,20 @@ public class Propuesto_3_3 extends JFrame implements ActionListener {
 		}
 	}
 	protected void actionPerformedBtnProcesar(ActionEvent arg0) {
-
+		Consultor c1 = new Consultor("Superman",111,320,11.4);
+		Consultor c2 = new Consultor(222,"Batman",240);
+		Consultor c3 = new Consultor();
+		
+		listado(c1);
+		listado(c2);
+		listado(c3);
+		
+		imprimir("------------------------------------");
+		imprimir("Descuento por AFP: S/." + Consultor.dsctoAfp);
+		imprimir("Descuento por EPS: S/." + Consultor.dsctoEps);
+		imprimir("Cantidad de consultores: " + Consultor.getCantidad());
+		imprimir("Acumulado de sueldos netos: S/." + Consultor.getSuma());
+		imprimir("------------------------------------");
 	}
 	//  Métodos tipo void (sin parámetros)
 	void imprimir() {
@@ -80,4 +94,15 @@ public class Propuesto_3_3 extends JFrame implements ActionListener {
 		txtS.append(s + "\n");
 	}	
 	
+	void listado (Consultor c) {
+		imprimir("Nombre: " + c.getNombre());
+		imprimir("Código: " + c.getCodigo());
+		imprimir("Horas trabajadas: " + c.getHorasTrabajadas());
+		imprimir("Tarifa por hora: S/." + c.getTarifaHora());
+		imprimir("Sueldo bruto: S/." + c.sueldoBruto());
+		imprimir("Descuento AFP: S/." + c.descuentoAFP());
+		imprimir("Descuento EPS: S/." + c.descuentoEPS());
+		imprimir("Sueldo neto: S/." + c.sueldoNeto());
+		imprimir();
+	}
 }

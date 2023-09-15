@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.EventQueue;
+import semana_03.Balon;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -69,7 +70,23 @@ public class Propuesto_3_2 extends JFrame implements ActionListener {
 		}
 	}
 	protected void actionPerformedBtnProcesar(ActionEvent arg0) {
-
+		Balon b1 = new Balon("Nike",150,5.3,23.3,40.90);
+		Balon b2 = new Balon("Umbro",130.4,4.8);
+		Balon b3 = new Balon();
+		
+		listado(b1);
+		listado(b2);
+		listado(b3);
+		
+		imprimir("---------------------------------");
+		imprimir("Valor de PI: " + Balon.pi);
+		imprimir("Descuento: " + Balon.descuento);
+		imprimir("Cantidad de balones: " + Balon.getCantidad());
+		imprimir("Importe a pagar acumulado: " + Balon.getSuma());
+		imprimir("---------------------------------");
+		
+		txtS.setCaretPosition(0);
+		
 	}
 	//  Métodos tipo void (sin parámetros)
 	void imprimir() {
@@ -80,4 +97,16 @@ public class Propuesto_3_2 extends JFrame implements ActionListener {
 		txtS.append(s + "\n");
 	}	
 	
+	void listado(Balon b) {
+		imprimir("Marca: " + b.getMarca());
+		imprimir("Peso en gramos: " + b.getPesoGramos());
+		imprimir("Presión en libras: " + b.getPresionLibras());
+		imprimir("Diámetro en cm: " + b.getDiametroCm());
+		imprimir("Precio: S/." + b.getPrecio());
+		imprimir("Radio(cm): " + b.radio());
+		imprimir("Volumen(cc): " + b.volumen());
+		imprimir("Descuento: S/." + b.descuento());
+		imprimir("Importe a pagar: S/." + b.importePagar());
+		imprimir();
+	}
 }
