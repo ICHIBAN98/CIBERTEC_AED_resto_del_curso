@@ -1,5 +1,5 @@
 package semana_03;
-
+//OAJSNDSAJNDASJNDSAJDNA
 public class Factura {
 
 	private String ruc, empresa;
