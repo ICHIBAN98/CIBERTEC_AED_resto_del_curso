@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.EventQueue;
+import semana_03.Empleado;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -69,7 +70,20 @@ public class Problema_3_2 extends JFrame implements ActionListener {
 		}
 	}
 	protected void actionPerformedBtnProcesar(ActionEvent arg0) {
-
+		Empleado e1 = new Empleado(1788,1,987645121,"Chacaloncito");
+		Empleado e2 = new Empleado(2659,"NeymarJr");
+		Empleado e3 = new Empleado();
+		listado(e1);
+		listado(e2);
+		listado(e3);
+		
+		imprimir("--------------------");
+		imprimir("descuento: " + Empleado.descuento);
+		imprimir("cantidad de empleados: " + Empleado.getCantidad());
+		imprimir("suma total de sueldos netos: S/." + Empleado.getSuma());
+		imprimir("--------------------");
+		
+		txtS.setCaretPosition(0);
 	}
 	//  Métodos tipo void (sin parámetros)
 	void imprimir() {
@@ -79,5 +93,15 @@ public class Problema_3_2 extends JFrame implements ActionListener {
 	void imprimir(String s) {
 		txtS.append(s + "\n");
 	}	
-	//PROBANDOOO A VER SI SE ACTUALIZA
+	
+	public void listado(Empleado e) {
+		imprimir("código: " + e.getCodigo());
+		imprimir("categoría: " + e.getCategoria());
+		imprimir("número de celular: " + e.getNumCel());
+		imprimir("nombre: " + e.getNombre());
+		imprimir("sueldo bruto: S/." + e.sueldoBruto());
+		imprimir("descuento: S/." + e.descuento());
+		imprimir("sueldo neto: S/." + e.sueldoNeto());
+		imprimir();
+	}
 }
