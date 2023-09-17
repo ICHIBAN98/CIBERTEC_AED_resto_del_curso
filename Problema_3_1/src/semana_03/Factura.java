@@ -1,5 +1,5 @@
 package semana_03;
-//OAJSNDSAJNDASJNDSAJDNA
+
 public class Factura {
 
 	private String ruc, empresa;
@@ -12,7 +12,7 @@ public class Factura {
 	public static final String entidad;
 
 	static {
-		entidad = "Sunat";
+		entidad = "RENIEC";
 		cantidad = 0;
 		suma = 0;
 	}
