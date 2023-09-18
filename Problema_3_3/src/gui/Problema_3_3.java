@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.EventQueue;
+import semana_03.Movil;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -69,7 +70,20 @@ public class Problema_3_3 extends JFrame implements ActionListener {
 		}
 	}
 	protected void actionPerformedBtnProcesar(ActionEvent arg0) {
-
+		Movil m1 = new Movil(999666222,120,"Gokú",0.14);
+		Movil m2 = new Movil(222666444,"Maestro Roshi");
+		Movil m3 = new Movil();
+		
+		listado(m1);
+		listado(m2);
+		listado(m3);
+		
+		imprimir("-----------------------");
+		imprimir("IGV: " + Movil.IGV);
+		imprimir("cantidad de celulares: " + Movil.getCantidad());
+		imprimir("suma total de importes a pagar: S/." + Movil.getSuma());
+		imprimir("-----------------------");
+		txtS.setCaretPosition(0);
 	}
 	//  Métodos tipo void (sin parámetros)
 	void imprimir() {
@@ -79,5 +93,16 @@ public class Problema_3_3 extends JFrame implements ActionListener {
 	void imprimir(String s) {
 		txtS.append(s + "\n");
 	}	
-	//PROBANDOOO A VER SI SE ACTUALIZA
+	
+	void listado(Movil m) {
+		imprimir("número: " + m.getNumero());
+		imprimir("segundos: " + m.getSegundos());
+		imprimir("nombre: " + m.getNombre());
+		imprimir("precio por segundo: S/." + m.getPrecioS());
+		imprimir("costo de consumo: S/." + m.costoConsumo());
+		imprimir("IGV: " + m.IGV());
+		imprimir("importe a pagar: S/." + m.importePagar());
+		imprimir();
+	}
+	
 }
