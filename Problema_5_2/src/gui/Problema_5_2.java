@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.EventQueue;
+import semana_05.ArregloSueldos;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -9,6 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 
@@ -86,11 +88,29 @@ public class Problema_5_2 extends JFrame implements ActionListener {
 			actionPerformedBtnListar(arg0);
 		}
 	}
+	
+	ArregloSueldos as = new ArregloSueldos();
+	DecimalFormat unDecimal = new DecimalFormat("#.#");
+	
 	protected void actionPerformedBtnListar(ActionEvent arg0) {
+		for(int i=0; i<as.tamanio(); i++) {
+			imprimir("["+ i +"]: S/." + unDecimal.format(as.obtener(i)));
+		}
+		imprimir();
 	}
 	protected void actionPerformedBtnReportar(ActionEvent arg0) {
+		imprimir("cantidad de sueldos: " + as.tamanio());
+		imprimir("sueldo promedio: S/." + unDecimal.format(as.sueldoPromedio()));
+		imprimir("sueldo mayor: S/." + unDecimal.format(as.sueldoMayor()));
+		imprimir("sueldo menor: S/." + unDecimal.format(as.sueldoMenor()));
+		imprimir("cantidad de empleados cuyo sueldo es mayor o igual al sueldo promedio: " + as.cantMayoresSueldoPromedio());
+		imprimir("cantidad de empleados cuyo sueldo es menor al sueldo promedio: " + as.cantMenoresSueldoPromedio());
+		imprimir("posición del segundo sueldo mayor a 850.0: " + as.posSegundoSueldoMayorAlMinimo());
+		imprimir("posición del último sueldo menor a 850.0: " + as.posUltimoSueldoMenorAlMinimo());
 	}
 	protected void actionPerformedBtnGenerar(ActionEvent arg0) {
+		as.generarSueldos();
+		imprimir("Los números han sido cambiados. Pulse [Listar]");
 	}
 	//  Métodos tipo void (sin parámetros)
 	void imprimir() {
