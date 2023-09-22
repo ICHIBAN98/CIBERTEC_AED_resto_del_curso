@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.EventQueue;
+import semana_05.ArregloNotas;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -86,11 +87,31 @@ public class Propuesto_5_1 extends JFrame implements ActionListener {
 			actionPerformedBtnListar(arg0);
 		}
 	}
+	
+	ArregloNotas an = new ArregloNotas();
+	
 	protected void actionPerformedBtnListar(ActionEvent arg0) {
+		for(int i=0;i<an.tamanio();i++) {
+			imprimir("nota [" +i+ "]: "+an.obtener(i));
+		}
+		imprimir();
 	}
 	protected void actionPerformedBtnReportar(ActionEvent arg0) {
+		imprimir("cantidad de notas: " + an.tamanio());
+		imprimir("nota promedio: " + an.notaPromedio());
+		imprimir("nota mayor: " + an.notaMayor());
+		imprimir("nota menor: " + an.notaMenor());
+		imprimir("cantidad de notas aprobatorias: " + an.cantNotasAprobatorias());
+		imprimir("cantidad de notas desaprobatorias: " + an.cantNotasDesaprobatorias());
+		imprimir("cantidad de notas mayores a 15: " + an.cantNotasMayoresA15());
+		imprimir("posición de la primera nota mayor o igual a 13: " + an.posPrimeraNotaAprobatoria());
+		imprimir("posición de la penúltima nota menor a 13: " + an.posPenultimaNotaDesaprobatoria());
+		imprimir();
 	}
 	protected void actionPerformedBtnGenerar(ActionEvent arg0) {
+		an.generarNotas();
+		imprimir("Los números han sido cambiados. Pulse [Listar]");
+		imprimir();
 	}
 	//  Métodos tipo void (sin parámetros)
 	void imprimir() {
