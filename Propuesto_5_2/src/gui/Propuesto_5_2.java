@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.EventQueue;
+import semana_05.ArregloPrecios;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -9,6 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 
@@ -21,6 +23,7 @@ public class Propuesto_5_2 extends JFrame implements ActionListener {
 	private JButton btnReportar;
 	private JScrollPane scrollPane;
 	private JTextArea txtS;
+	private JButton btnGenerar;
 
 	/**
 	 * Launch the application.
@@ -53,12 +56,12 @@ public class Propuesto_5_2 extends JFrame implements ActionListener {
 		
 		btnListar = new JButton("Listar");
 		btnListar.addActionListener(this);
-		btnListar.setBounds(120, 11, 95, 23);
+		btnListar.setBounds(63, 11, 95, 23);
 		contentPane.add(btnListar);
 		
 		btnReportar = new JButton("Reportar");
 		btnReportar.addActionListener(this);
-		btnReportar.setBounds(220, 11, 95, 23);
+		btnReportar.setBounds(168, 11, 95, 23);
 		contentPane.add(btnReportar);
 		
 		scrollPane = new JScrollPane();
@@ -68,6 +71,11 @@ public class Propuesto_5_2 extends JFrame implements ActionListener {
 		txtS = new JTextArea();
 		txtS.setFont(new Font("Monospaced", Font.PLAIN, 13));
 		scrollPane.setViewportView(txtS);
+		
+		btnGenerar = new JButton("Generar");
+		btnGenerar.addActionListener(this);
+		btnGenerar.setBounds(273, 11, 89, 23);
+		contentPane.add(btnGenerar);
 	}
 	public void actionPerformed(ActionEvent arg0) {
 		if (arg0.getSource() == btnReportar) {
@@ -76,12 +84,35 @@ public class Propuesto_5_2 extends JFrame implements ActionListener {
 		if (arg0.getSource() == btnListar) {
 			actionPerformedBtnListar(arg0);
 		}
+		if(arg0.getSource()==btnGenerar) {
+			actionPerformedBtnGenerar(arg0);
+		}
 	}
+	
+	ArregloPrecios ap = new ArregloPrecios();
+	DecimalFormat unDecimal = new DecimalFormat("#.#");
+	
 	protected void actionPerformedBtnListar(ActionEvent arg0) {
-
+		for(int i=0;i<ap.tamanio();i++) {
+			imprimir("nota [" +i+ "]: "+unDecimal.format(ap.obtener(i)));
+		}
+		imprimir();
 	}
 	protected void actionPerformedBtnReportar(ActionEvent arg0) {
-
+		imprimir("cantidad de precios: " + ap.tamanio());
+		imprimir("precio promedio: " + unDecimal.format(ap.precioPromedio()));
+		imprimir("precio mayor: " + unDecimal.format(ap.precioMayor()));
+		imprimir("precio menor: " + unDecimal.format(ap.precioMenor()));
+		imprimir("cantidad de productos cuyo precio es mayor o igual al precio promedio: " + ap.cantMayoresPrecioPromedio());
+		imprimir("cantidad de productos cuyo precio es menor al precio promedio: " + ap.cantMenoresPrecioPromedio());
+		imprimir("posición del primer precio mayor al segundo de los precios : " + ap.posPrimerPrecioMayorAlSegundo());
+		imprimir("posición del último precio menor al penúltimo de los precios: " + ap.posUltimoPrecioMenorAlPenultimo());
+		imprimir();
+	}
+	protected void actionPerformedBtnGenerar(ActionEvent arg0) {
+		ap.generarPrecios();
+		imprimir("Los números han sido cambiados. Pulse [Listar]");
+		imprimir();
 	}
 	//  Métodos tipo void (sin parámetros)
 	void imprimir() {
@@ -91,5 +122,4 @@ public class Propuesto_5_2 extends JFrame implements ActionListener {
 	void imprimir(String s) {
 		txtS.append(s + "\n");
 	}
-	
 }
