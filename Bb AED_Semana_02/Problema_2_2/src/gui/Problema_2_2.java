@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.EventQueue;
+import semana_02.Computadora;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -69,11 +70,26 @@ public class Problema_2_2 extends JFrame implements ActionListener {
 		}
 	}
 	protected void actionPerformedBtnProcesar(ActionEvent arg0) {
+		Computadora c = new Computadora(236458,"Lenovo","plateado",500);
+		listado(c);
+		
+		double nuevoPrecioUSD=c.getPrecioUSD()*0.9;
+		c.setPrecioUSD(nuevoPrecioUSD);
+		listado(c);
 		
 	}
 	//  Métodos tipo void (con parámetros)
 	void imprimir(String s) {
 		txtS.append(s + "\n");
+	}
+	void listado (Computadora c) {
+		imprimir("código: " + c.getCodigo());
+		imprimir("marca: " + c.getMarca());
+		imprimir("color: " + c.getColor());
+		imprimir("precio en dólares: " + c.getPrecioUSD());
+		imprimir("precio en soles: " + c.precioSoles());
+		imprimir("precio en euros: " + c.precioEuros());
+		imprimir("");
 	}
 	
 }
