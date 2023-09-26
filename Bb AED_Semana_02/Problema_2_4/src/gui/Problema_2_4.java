@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.EventQueue;
+import semana_02.Obrero;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -69,11 +70,31 @@ public class Problema_2_4 extends JFrame implements ActionListener {
 		}
 	}
 	protected void actionPerformedBtnProcesar(ActionEvent arg0) {
+		Obrero ob = new Obrero(325,300,"Juancito",10.3);
+		listado(ob);
 		
+		int nuevasHorasTrabajadas = ob.getHorasTrabajadas()+8;
+		ob.setHorasTrabajadas(nuevasHorasTrabajadas);
+		
+		double nuevaTarifaPorHora = ob.getTarifaPorHora()*0.985;
+		ob.setTarifaPorHora(nuevaTarifaPorHora);
+		
+		listado(ob);
 	}
 	//  Métodos tipo void (con parámetros)
 	void imprimir(String s) {
 		txtS.append(s + "\n");
+	}
+	void listado(Obrero o) {
+		imprimir("código: " + o.getCodigo());
+		imprimir("nombre: " + o.getNombre());
+		imprimir("horas trabajadas: " + o.getHorasTrabajadas());
+		imprimir("tarifa por hora: S/." + o.getTarifaPorHora());
+		imprimir("sueldo bruto: S/." + o.sueldoBruto());
+		imprimir("descuento AFP: S/." + o.dsctoAFP());
+		imprimir("descuento EPS: S/." + o.dsctoEPS());
+		imprimir("sueldo neto: S/" + o.sueldoNeto());
+		imprimir("");
 	}
 	
 }
