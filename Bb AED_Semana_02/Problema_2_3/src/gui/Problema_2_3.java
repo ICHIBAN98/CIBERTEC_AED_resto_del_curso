@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.EventQueue;
+import semana_02.Edificio;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -125,35 +126,13 @@ public class Problema_2_3 extends JFrame implements ActionListener {
 		}
 	}
 	protected void actionPerformedBtnProcesar(ActionEvent arg0) {
-		try {
-			int codigo = leerCodigo();
-			try {
-				int numDptos = leerNumDptos();
-				try {
-					int numPisos = leerNumPisos();
-					try {
-						double precioDpto = leerPrecioDpto();
-						/**
-						Edificio e = new Edificio(codigo, numDptos, numPisos, precioDpto);
-						*/
-						
-						limpieza();
-					}
-					catch (Exception e) {
-						mensaje("Ingrese PRECIO DE DEPARTAMENTO correcto", txtPrecioDpto);
-					}
-				}
-				catch (Exception e) {
-					mensaje("Ingrese NÚMERO DE PISOS correcto", txtNumPisos);
-				}
-			}
-			catch (Exception e) {
-				mensaje("Ingrese NÚMERO DE DEPARTAMENTOS correcto", txtNumDptos);
-			}
-		}
-		catch (Exception e) {
-			mensaje("Ingrese CÓDIGO correcto", txtCodigo);
-		}	
+		
+		Edificio e = new Edificio(Integer.parseInt(txtCodigo.getText()),Integer.parseInt(txtNumDptos.getText()),Integer.parseInt(txtNumPisos.getText()),Double.parseDouble(txtPrecioDpto.getText()));
+		listado(e);
+		
+		double nuevoPrecioUnDpto = e.getPrecioDptoUSD()*1.2;
+		e.setPrecioDptoUSD(nuevoPrecioUnDpto);
+		listado(e);
 	}
 	protected void actionPerformedBtnBorrar(ActionEvent arg0) {
 		limpieza();
@@ -176,6 +155,16 @@ public class Problema_2_3 extends JFrame implements ActionListener {
 		txt.setText("");
 		txt.requestFocus();
 	}
+	void listado(Edificio e) {
+		imprimir("código: " + e.getCodigo());
+		imprimir("número de apartamentos " + e.getNumeroApartamentos());
+		imprimir("cantidad de pisos del edificio: " + e.getCantPisos());
+		imprimir("precio de un departamento en USD: $" + e.getPrecioDptoUSD());
+		imprimir("precio del edificio en USD: $" + e.precioUSDEdificio());
+		imprimir("");
+	}
+	
+	
 	//  Métodos que retornan valor (sin parámetros)
 	int leerCodigo() {
 		return Integer.parseInt(txtCodigo.getText().trim());
