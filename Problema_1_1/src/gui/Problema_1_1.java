@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.EventQueue;
+import semana_01.Docente;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -69,7 +70,20 @@ public class Problema_1_1 extends JFrame implements ActionListener {
 		}
 	}
 	protected void actionPerformedBtnProcesar(ActionEvent arg0) {
+		Docente doc = new Docente();
+		doc.codigo = 1234;
+		doc.horas = 24;
+		doc.nombre = "San Pedro";
+		doc.tarifa = 34.5;
 		
+		imprimir("Docente: " + doc);
+		imprimir("Código: " + doc.codigo);
+		imprimir("Nombre: " + doc.nombre);
+		imprimir("Tarifa: " + doc.tarifa);
+		imprimir("Horas: " + doc.horas);
+		imprimir("Sueldo bruto: " + doc.sueldoBruto());
+		imprimir("Descuento: " + doc.descuento());
+		imprimir("Sueldo neto: " + doc.sueldoNeto());
 	}
 	//  Métodos tipo void (con parámetros)
 	void imprimir(String s) {
