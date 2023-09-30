@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.EventQueue;
+import semana_01.Filmacion;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -69,7 +70,18 @@ public class Problema_1_2 extends JFrame implements ActionListener {
 		}
 	}
 	protected void actionPerformedBtnProcesar(ActionEvent arg0) {
+		Filmacion film = new Filmacion();
+		film.codigo = 9999;
+		film.minutos = 135;
+		film.pre_sol = 89.90;
+		film.titulo = "El viaje de Chihiro";
 		
+		imprimir ("Filme: " + film);
+		imprimir ("Código: " + film.codigo);
+		imprimir ("Minutos: " + film.minutos);
+		imprimir ("Precio en soles: " + film.pre_sol);
+		imprimir ("Título: " + film.titulo);
+		imprimir ("Precio en dólares: " + film.precioDolares());
 	}
 	//  Métodos tipo void (con parámetros)
 	void imprimir(String s) {
