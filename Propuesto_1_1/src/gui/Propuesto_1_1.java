@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.EventQueue;
+import semana_01.Expositor;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -69,6 +70,22 @@ public class Propuesto_1_1 extends JFrame implements ActionListener {
 		}
 	}
 	protected void actionPerformedBtnProcesar(ActionEvent arg0) {
+		
+		Expositor expositor = new Expositor();
+		
+		expositor.codigo = 12345;
+		expositor.horasTrabajadas = 85;
+		expositor.nombre = "Biscuit Oliva";
+		expositor.tarifaHora = 6;
+		
+		imprimir("Codigo: " + expositor.codigo);
+		imprimir("Nombre: " + expositor.nombre);
+		imprimir("Horas trabajadas: " + expositor.horasTrabajadas);
+		imprimir("Tarifa por hora: " + expositor.tarifaHora);
+		imprimir("Sueldo bruto: S/." + expositor.sueldoBruto());
+		imprimir("Descuento AFP: " + expositor.dsctoAFP());
+		imprimir("Descuento EPS: " + expositor.dsctoEPS());
+		imprimir("Sueldo neto: S/." + expositor.sueldoNeto());
 		
 	}
 	//  Métodos tipo void (con parámetros)
