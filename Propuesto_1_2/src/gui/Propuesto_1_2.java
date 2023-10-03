@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.EventQueue;
+import semana_01.Trabajador;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -69,6 +70,19 @@ public class Propuesto_1_2 extends JFrame implements ActionListener {
 		}
 	}
 	protected void actionPerformedBtnProcesar(ActionEvent arg0) {
+		
+		Trabajador a = new Trabajador();
+		
+		a.codigo = 98741;
+		a.nombre = "Don Ramón";
+		a.horasTrabajadas = 20;
+		a.tarifaHora = 3.50;
+		
+		imprimir("Código: " + a.codigo);
+		imprimir("Nombre: " + a.nombre);
+		imprimir("Horas trabajadas: " + a.horasTrabajadas);
+		imprimir("Tarifa por hora: S/." + a.tarifaHora);
+		imprimir("Sueldo: S/." + a.sueldo());
 		
 	}
 	//  Métodos tipo void (con parámetros)
