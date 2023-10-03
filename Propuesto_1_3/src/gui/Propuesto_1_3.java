@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.EventQueue;
+import semana_01.Numeros;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -69,6 +70,19 @@ public class Propuesto_1_3 extends JFrame implements ActionListener {
 		}
 	}
 	protected void actionPerformedBtnProcesar(ActionEvent arg0) {
+		
+		Numeros a = new Numeros();
+		
+		a.numero1 = -50;
+		a.numero2 = 3500;
+		a.numero3 = 10;
+		
+		imprimir ("Número 1: " + a.numero1);
+		imprimir ("Número 2: " + a.numero2);
+		imprimir ("Número 3: " + a.numero3);
+		imprimir ("Número mayor: " + a.numeroMayor());
+		imprimir ("Número menor: " + a.numeroMenor());
+		imprimir ("Número del medio: " + a.numeroMedio());
 		
 	}
 	//  Métodos tipo void (con parámetros)
