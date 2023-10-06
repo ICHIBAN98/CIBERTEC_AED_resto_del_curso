@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.EventQueue;
+import semana_06.ArregloNotas;
 
 import javax.swing.JFrame;
 
@@ -102,6 +103,8 @@ public class Problema_6_2 extends JFrame implements ActionListener {
 		txtS.setFont(new Font("Monospaced", Font.PLAIN, 13));
 		scrollPane.setViewportView(txtS);
 	}
+	
+	ArregloNotas an = new ArregloNotas();
 
 	public void actionPerformed(ActionEvent arg0) {
 		if (arg0.getSource() == btnRemplazarUltimaNotaDesaprobatoria) {
@@ -123,19 +126,41 @@ public class Problema_6_2 extends JFrame implements ActionListener {
 	}
 
 	protected void actionPerformedBtnAdicionar(ActionEvent arg0) {
-
+		an.adicionar(leerNota());
+		limpieza();
+		listar();
 	}
 	protected void actionPerformedBtnEliminarAlFinal(ActionEvent arg0) {
-	
+		if(an.tamanio()==0) {
+			mensaje("ERROR: No hay ninguna nota ingresada.");
+		} else {
+			an.eliminarAlFinal();
+		}
+		listar();
 	}
 	protected void actionPerformedBtnEliminarTodo(ActionEvent arg0) {
-		
+		if(an.tamanio()==0) {
+			mensaje("ERROR: No hay ninguna nota ingresada.");
+		} else {
+			an.eliminarTodo();
+		}
+		txtS.setText("");
 	}
 	protected void actionPerformedBtnDecrementarUltimaNotaDesaprobatoria(ActionEvent arg0) {
-	
+		if(an.posUltimaNotaDesaprobatoria()!=-1) {
+			an.decrementarUltimaNotaDesaprobatoria();
+			listar();
+		} else {
+			mensaje("ERROR: No hay notas desaprobatorias.");
+		}
 	}
 	protected void actionPerformedBtnRemplazarUltimaNotaDesaprobatoria(ActionEvent arg0) {
-	
+		if(an.posUltimaNotaDesaprobatoria()!=-1) {
+			an.remplazarUltimaNotaDesaprobatoria();
+			listar();
+		} else {
+			mensaje("ERROR: No hay notas desaprobatorias.");
+		}
 	}
 	//  Métodos tipo void (sin parámetros)
 	void imprimir() {
@@ -146,7 +171,10 @@ public class Problema_6_2 extends JFrame implements ActionListener {
 		txtNota.requestFocus();
 	}
 	void listar() {
-
+		txtS.setText("");
+		for (int i =0; i<an.tamanio(); i++) {
+			imprimir("nota[" + i + "]: " + an.obtener(i));
+		}
 	}
 	//  Métodos tipo void (con parámetros)
 	void imprimir(String s) {
