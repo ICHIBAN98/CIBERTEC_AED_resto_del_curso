@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.EventQueue;
+import semana_06.ArregloTemperaturas;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -102,6 +103,8 @@ public class Propuesto_6_1 extends JFrame implements ActionListener {
 		scrollPane.setViewportView(txtS);
 	}
 
+	ArregloTemperaturas at = new ArregloTemperaturas(); 
+	
 	public void actionPerformed(ActionEvent arg0) {
 		if (arg0.getSource() == btnRemplazarPrimeraTemperaturaNormal) {
 			actionPerformedBtnRemplazarPrimeraTemperaturaNormal(arg0);
@@ -122,19 +125,41 @@ public class Propuesto_6_1 extends JFrame implements ActionListener {
 	}
 
 	protected void actionPerformedBtnAdicionar(ActionEvent arg0) {
-
+		try {
+		at.adicionar(leerTemperatura());
+		listar();
+		}
+		catch(Exception e) {
+			mensaje("ERROR: Vuelva a intentar ingresar una temperatura.");
+		}
 	}
 	protected void actionPerformedBtnEliminarAlFinal(ActionEvent arg0) {
-
+		if(at.tamanio()==0) {
+			mensaje("ERROR: No hay temperatura nota ingresada.");
+		} else {
+			at.eliminarAlFinal();
+		}
+		listar();
 	}
 	protected void actionPerformedBtnEliminarTodo(ActionEvent arg0) {
-
+		if(at.tamanio()==0) {
+			mensaje("ERROR: No hay ninguna temperatura ingresada.");
+		} else {
+			at.eliminarTodo();
+		}
+		listar();
 	}
 	protected void actionPerformedBtnRemplazarPrimeraTemperaturaNormal(ActionEvent arg0) {
-
+		if(at.posPrimeraTemperaturaNormal()!=-1) {
+			at.remplazarPrimeraTemperaturaNormal();
+			listar();
+		} else {
+			mensaje("ERROR: No hay ninguna temperatura normal.");
+		}
 	}
 	protected void actionPerformedBtnIncrementarTemperaturas(ActionEvent arg0) {
-	
+		at.incrementarTemperaturas();
+		listar();
 	}
 	//  Métodos tipo void (sin parámetros)
 	void imprimir() {
@@ -145,7 +170,10 @@ public class Propuesto_6_1 extends JFrame implements ActionListener {
 		txtTemperatura.requestFocus();
 	}
 	void listar() {
-
+		txtS.setText("");
+		for(int i = 0; i<at.tamanio(); i++) {
+			imprimir("temperatura[" + i + "]: " + at.obtener(i) + "°C");
+		}
 	}
 	//  Métodos tipo void (con parámetros)
 	void imprimir(String s) {
