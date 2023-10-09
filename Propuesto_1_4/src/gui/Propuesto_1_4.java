@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.EventQueue;
+import semana_01.Caja;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -69,6 +70,21 @@ public class Propuesto_1_4 extends JFrame implements ActionListener {
 		}
 	}
 	protected void actionPerformedBtnProcesar(ActionEvent arg0) {
+		
+		Caja a = new Caja();
+		
+		a.largoCm = 80;
+		a.anchoCm = 60;
+		a.altoCm = 30;
+		a.pesoKg = 12;
+		
+		imprimir("Largo de la caja: " + a.largoCm + "cm");
+		imprimir("Ancho de la caja: " + a.anchoCm + "cm");
+		imprimir("Alto de la caja: " + a.altoCm + "cm");
+		imprimir("Peso de balanza: " + a.pesoKg + "Kg");
+		imprimir("Volumen de la caja: " + a.volumenCajaCc() + "cc");
+		imprimir("Peso volumétrico: " + a.pesoVolKg() + "Kg");
+		imprimir("Peso facturable: " + a.pesoFacturable() + "Kg");
 		
 	}
 	//  Métodos tipo void (con parámetros)
