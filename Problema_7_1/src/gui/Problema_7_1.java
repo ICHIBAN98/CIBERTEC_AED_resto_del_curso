@@ -161,13 +161,31 @@ public class Problema_7_1 extends JFrame implements ActionListener {
 			mensaje("el Arreglo está vacío");			
 	}
 	protected void actionPerformedBtnRemplazarPrimeraEdadAdolescente(ActionEvent arg0) {
-		
+		if (ae.tamanio() > 0) {
+			ae.remplazarPrimeraEdadAdolescente();
+			listar();
+		}
+		else{
+			mensaje("el Arreglo está vacío");
+		}
 	}
 	protected void actionPerformedBtnIntercambiarEdadesAdolescentesExtremas(ActionEvent arg0) {
-		
+		if (ae.tamanio() > 0) {
+			ae.intercambiarEdadesAdolescentesExtremas();;
+			listar();
+		}
+		else{
+			mensaje("el Arreglo está vacío");
+		}
 	}
 	protected void actionPerformedBtnEliminarPrimeraEdadAdolescente(ActionEvent arg0) {
-		
+		if (ae.tamanio() > 0) {
+			ae.eliminarPrimeraEdadAdolescente();
+			listar();
+		}
+		else{
+			mensaje("el Arreglo está vacío");
+		}
 	}
 	//  Métodos tipo void (sin parámetros)
 	void imprimir() {
