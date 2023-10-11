@@ -151,10 +151,21 @@ public class Problema_7_2 extends JFrame implements ActionListener {
 			mensaje("el Arreglo está vacío");	
 	}
 	protected void actionPerformedBtnRemplazarUltimaNotaAaprobatoria(ActionEvent arg0) {
-	
+		if (an.tamanio() > 0) {
+			an.remplazarUltimaNotaAprobatoria();
+			listar();
+		}
+		else
+			mensaje("el Arreglo está vacío");
+		
 	}
 	protected void actionPerformedBtnEliminarPrimeraNotaAprobatoria(ActionEvent arg0) {
-	
+		if (an.tamanio() > 0) {
+			an.eliminarPrimeraNotaAprobatoria();
+			listar();
+		}
+		else
+			mensaje("el Arreglo está vacío");
 	}
 	//  Métodos tipo void (sin parámetros)
 	void imprimir() {
