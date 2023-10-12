@@ -161,13 +161,28 @@ public class Problema_7_3 extends JFrame implements ActionListener {
 			mensaje("el Arreglo está vacío");	
 	}
 	protected void actionPerformedBtnRemplazarPrimeraTemperaturaFebril(ActionEvent arg0) {
-
+		if (at.tamanio() > 0) {
+			at.remplazarPrimeraTemperaturaFebril();
+			listar();
+		}
+		else
+			mensaje("el Arreglo está vacío");	
 	}
 	protected void actionPerformedBtnRemplazarUltimaTemperaturaFebril(ActionEvent arg0) {
-	
+		if (at.tamanio() > 0) {
+			at.remplazarUltimaTemperaturaFebril();
+			listar();
+		}
+		else
+			mensaje("el Arreglo está vacío");	
 	}
 	protected void actionPerformedBtnEliminarPrimeraTemperaturaFebril(ActionEvent arg0) {
-		
+		if (at.tamanio() > 0) {
+			at.eliminarPrimeraTemperaturaFebril();
+			listar();
+		}
+		else
+			mensaje("el Arreglo está vacío");	
 	}
 	//  Métodos tipo void (sin parámetros)
 	void imprimir() {
@@ -180,7 +195,7 @@ public class Problema_7_3 extends JFrame implements ActionListener {
 	void listar() {
 		txtS.setText("");
 		for (int i=0; i<at.tamanio(); i++)
-			imprimir("temperatura[" + i + "] : " + at.obtener(i));
+			imprimir("temperatura[" + i + "] : " + at.obtener(i)+"°C");
 	}
 	//  Métodos tipo void (con parámetros)
 	void imprimir(String s) {

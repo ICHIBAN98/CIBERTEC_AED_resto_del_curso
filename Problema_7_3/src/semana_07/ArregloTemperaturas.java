@@ -38,4 +38,69 @@ public class ArregloTemperaturas {
 			temperatura[i] = aux[i];
 	}
 	
+	//----------------------------------------------------------------------------------
+	//----------------------------------------------------------------------------------
+	
+	private double temperaturaPromedio() {
+		double promedio;
+		double suma=0;
+		for(int i=0; i<tamanio(); i++) {
+			suma+=temperatura[i];
+		}
+		promedio=suma/tamanio();
+		return promedio;
+	}
+	
+	private int posPrimeraTemperaturaFebril() {
+		for(int i=0; i<tamanio();i++) {
+			double t = temperatura[i];
+			if(t>37.2) {
+				return i;
+			}
+		}
+		return -1;
+	}
+	
+	private int buscarUltimaTemperaturaFebril() {
+		for(int i=tamanio()-1;i>=0;i--) {
+			double t = temperatura[i];
+			if(t>37.2) {
+				return i;
+			}
+		}
+		return -1;
+	}
+	
+	private void eliminar(int pos) {
+		for(int i=pos; i<tamanio()-1;i++) {
+			temperatura[i]=temperatura[i+1];
+		}
+		indice--;
+	}
+	
+	//----------------------------------------------------------------------------------
+	//----------------------------------------------------------------------------------
+	
+	public void remplazarPrimeraTemperaturaFebril() {
+		int posPrim = posPrimeraTemperaturaFebril();
+		int posUlt = buscarUltimaTemperaturaFebril();
+		if(posPrim!=-1 && posUlt!=-1) {
+			temperatura[posPrim]=temperatura[posUlt];
+		}
+	}
+	
+	public void remplazarUltimaTemperaturaFebril() {
+		int posUlt = buscarUltimaTemperaturaFebril();
+		if(posUlt!=-1) {
+			temperatura[posUlt]=temperaturaPromedio();
+		}
+	}
+	
+	public void eliminarPrimeraTemperaturaFebril() {
+		int posPrim = posPrimeraTemperaturaFebril();
+		if(posPrim!=-1) {
+			eliminar(posPrim);
+		}
+	}
+	
 }
