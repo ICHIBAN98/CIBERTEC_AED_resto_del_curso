@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.EventQueue;
+import semana_07.ArregloCodigos;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -101,6 +102,8 @@ public class Propuesto_7_1 extends JFrame implements ActionListener {
 		txtS.setFont(new Font("Monospaced", Font.PLAIN, 13));
 		scrollPane.setViewportView(txtS);
 	}
+	
+	ArregloCodigos ac = new ArregloCodigos();
 
 	public void actionPerformed(ActionEvent arg0) {
 		if (arg0.getSource() == btnEliminar2) {
@@ -122,19 +125,46 @@ public class Propuesto_7_1 extends JFrame implements ActionListener {
 	}
 
 	protected void actionPerformedBtnAdicionar(ActionEvent arg0) {
-		
+		try {
+			ac.adicionar(leerCodigo());
+			listar();
+			limpieza();
+		} 
+		catch (Exception e) {
+			mensaje("Error de ingreso");
+		}
 	}
 	protected void actionPerformedBtnIntercambiar1(ActionEvent arg0) {
-		
+		if(ac.tamanio()>0) {
+			ac.intercambiarSegPen();
+			listar();
+		}else {
+			mensaje("Error: Insuficientes códigos en el Arreglo");
+		}
 	}
 	protected void actionPerformedBtnEliminar1(ActionEvent arg0) {
-		
+		if(ac.tamanio()>0) {
+			ac.eliminarPrimero();
+			listar();
+		} else{
+			mensaje("Error: Arreglo vacío");
+		}
 	}
 	protected void actionPerformedBtnIntercambiar2(ActionEvent arg0) {
-		
+		if(ac.tamanio()>=4) {
+			ac.intercambiarCodigo();
+			listar();
+		}else {
+			mensaje("Error: No se cumplen las condiciones necesarias");
+		}
 	}
 	protected void actionPerformedBtnEliminar2(ActionEvent arg0) {
-		
+		if(ac.tamanio()>0) {
+			ac.eliminarCodigo();
+			listar();
+		}else {
+			mensaje("Error: Arreglo vacío");
+		}
 	}
 	//  Métodos tipo void (sin parámetros)
 	void imprimir() {
@@ -145,7 +175,10 @@ public class Propuesto_7_1 extends JFrame implements ActionListener {
 		txtCodigo.requestFocus();
 	}
 	void listar() {
-
+		txtS.setText("");
+		for(int i=0; i<ac.tamanio(); i++) {
+			imprimir("codigo[" + i + "]: " + ac.obtener(i));
+		}
 	}
 	//  Métodos tipo void (con parámetros)
 	void imprimir(String s) {
@@ -158,5 +191,4 @@ public class Propuesto_7_1 extends JFrame implements ActionListener {
 	int leerCodigo()  {
 		return Integer.parseInt(txtCodigo.getText().trim());
 	}
-	
 }
