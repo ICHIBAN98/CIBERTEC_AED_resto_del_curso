@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.EventQueue;
+import semana_01.Equipo;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -69,6 +70,20 @@ public class Propuesto_1_5 extends JFrame implements ActionListener {
 		}
 	}
 	protected void actionPerformedBtnProcesar(ActionEvent arg0) {
+		
+		Equipo a = new Equipo();
+		
+		a.codigo = 23645;
+		a.marca = "Motorola";
+		a.color = "Gris";
+		a.precioUSD = 160.40;
+		
+		imprimir("Código del equipo: " + a.codigo);
+		imprimir("Marca del equipo: " + a.marca);
+		imprimir("Color del equipo: " + a.color);
+		imprimir("Precio en dólares: $" + a.precioUSD);
+		imprimir("Precio en soles: S/." + a.precioSoles());
+		imprimir("Precio en euros: €" + a.precioEuros());
 		
 	}
 	//  Métodos tipo void (con parámetros)
