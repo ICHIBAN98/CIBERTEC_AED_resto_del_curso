@@ -1,0 +1,56 @@
+package laboratorio02;
+
+public class ArregloPrecios {
+    private double precio[];
+    private int indice;
+
+    public ArregloPrecios() {
+        precio = new double[10];
+        indice = 0;
+    }
+
+    public int tamanio() {
+        return indice;
+    }
+
+    public double obtener(int p) {
+        return precio[p];
+    }
+
+    public void adicionar(double s) {
+        if (indice == tamanio()) {
+        	ampliarPrecio();
+        }
+        precio[indice] = s;
+        indice++;
+    }
+
+    private void ampliarPrecio() {
+        double aux[] = precio;
+        precio = new double[indice + 10];
+        for (int i = 0; i < indice; i++)
+            precio[i] = aux[i];
+    }
+    
+    public void eliminarTodo() {
+        indice = 0;
+    }
+
+    public void eliminarFinal() {
+        indice--;
+    }
+    
+    
+    public double posicionUltimoPrecioMenorQue900() {
+    	for(int i=indice-1; i>=0; i--) {
+    		if(precio[i]<900) {
+    			return i;
+    		}
+    	}
+    	return -1;
+    }
+    
+    
+    
+}
+
