@@ -1,0 +1,5 @@
+INDEX VERSION 1.131+D:\AAA_Cibertec\2° CICLO\ALGORITMOS Y ESTRUCTURA DE DATOS\semana 11\TAREA TERMINADA - AED_Semana_09_Lab\AED_Semana_09_Lab\.metadata\.plugins\org.eclipse.jdt.core
+2367260447.index
+2486435540.index
+221949806.index
+14526675.index
